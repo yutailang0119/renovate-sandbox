@@ -1,0 +1,18 @@
+name: swift-package-manager
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    paths:
+      - swift-package-manager
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: swift build --package-path swift-package-manager
+    - name: Run tests
+      run: swift test --package-path swift-package-manager
